@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="Ayoub Berdeddouch">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+	<meta property="og:site_name" content="" /> <!-- website name -->
+	<meta property="og:site" content="" /> <!-- website link -->
+	<meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+	<meta property="og:type" content="article" />
+
+    <!-- Website Title -->
+    <title>ECG Classification</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
+	<link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/fontawesome-all.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/swiper.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/magnific-popup.css')}}" rel="stylesheet">
+	<link href="{{url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
+
+	
+	
+
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="{{url_for('static', filename='images/ecg.svg')}}">
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+    
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="/"><img src="{{url_for('static', filename='images/ecg.svg')}}"		alt="alternative"></a>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-awesome fas fa-bars"></span>
+            <span class="navbar-toggler-awesome fas fa-times"></span>
+        </button>
+        <!-- end of mobile menu toggle button -->
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#header">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#Classify">Classify</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#Insights">INSIGHTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#contact">CONTACT</a>
+                </li>
+            </ul>
+           
+        </div>
+    </nav> <!-- end of navbar -->
+    <!-- end of navbar -->
+
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <h1>ECG <span id="js-rotating"> Domain Knowledge, Dataset Gathering, Pre-processing, Modelization, Classification</span></h1>
+                            <p class="p-heading p-large"></p>
+                            <a class="btn-solid-lg page-scroll" href="#Classify">Classify ECG Images</a>    
+
+                        </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+<!-- Description -->
+    <div id="Classify" class="cards-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    <!-- Card -->
+                    <div class="card">
+                        <span class="fa-stack">
+                            <span class="hexagon"></span>
+                            <i class="fas fa-binoculars fa-stack-1x"></i>
+                        </span>
+                        <div class="card-body">
+                            <h4 class="card-title">Domain Knowledge</h4>
+                            <p>●<b>ECG</b> contains waves, intervals, segments and one complex</p>
+                            <p>
+                                <ul>
+                                    <ol>● <b>Wave</b>: A positive or negative deflection from baseline that indicates aspecific electrical event( P wave, Q wave, R wave, S wave, T wave andU wave)</ol>
+                                    <ol>●<b>Interval</b>: The time between two specific ECG events.(PR interval, QRSinterval, QT interval and RR interval)</ol>
+                                    <ol>● <b>Segment</b>: The length between two specific points on an ECG that aresupposed to be at the baseline amplitude ( PR segment, ST segmentand TP segment).</ol>
+                                    <ol>● <b>Complex</b>: The combination of multiple waves grouped together. Theonly main complex on an ECG is the QRS complex</ol>
+                                </ul>
+                                ●<b>ECG</b> is made up of 12 characteristic views of the heart, six obtained from the ‘limb’ leads (I, II, III, VR, VL, VF) and six from the ‘chest’ leads (V1–V6).                                                  
+                            </p>
+                            
+                        </div>
+                    </div>
+                    <!-- end of card -->
+
+                    <!-- Card -->
+                    <div class="card">
+                        <span class="fa-stack">
+                            <span class="hexagon"></span>
+                            <i class="fas fa-file-alt fa-stack-1x"></i>
+                        </span>
+                        <div class="card-body">
+                            <h4 class="card-title">Datasets Gathering</h4>
+                            <p>● ECG Image Dataset <br>
+                            ● PTB-XL Records Dataset</p>
+                           
+                        </div>
+                    </div>
+                    <!-- end of card -->
+
+                    <!-- Card -->
+                    <div class="card">
+                        <span class="fa-stack">
+                            <span class="hexagon"></span>
+                            <i class="fas fa-list-alt fa-stack-1x"></i>
+                        </span>
+                        <div class="card-body">
+                            <h4 class="card-title">Preprocessing</h4>
+                            <p> ● Cropping ECG Reports <br>
+                                ● Removing Background & Noise <br>
+                                ● Extracting 12 Leads <br>
+
+                            </p>
+                           
+                        </div>
+                    </div>
+                    <!-- end of card -->
+                    </div> <!-- end of col --> 
+                    <div class="col-lg-12">
+                    <!-- Card -->
+                    <div class="card">
+                        <span class="fa-stack">
+                            <span class="hexagon"></span>
+                            <i class="fas fa-file-code fa-stack-1x"></i>
+                        </span>
+                        <div class="card-body">
+                            <h4 class="card-title">Modelization</h4>
+                            <p> ● Simple VGG <br>
+                                ● AlexNet VGG <br>
+                                ● ongoing...
+
+                                
+                            </p>
+                           
+                        </div>
+                    </div>
+                    <!-- end of card -->
+
+                    <!-- Card -->
+                    <div class="card">
+                        <span class="fa-stack">
+                            <span class="hexagon"></span>
+                            <i class="fas fa-heartbeat fa-stack-1x"></i>
+                        </span>
+                        <div class="card-body">
+                            <h4 class="card-title">Classsification</h4>
+                            <p>● Classify wetheir its Alarming, Risked, or Normal</p>
+                        </div>
+                    </div>
+                    <!-- end of card -->
+
+                </div> <!-- end of col --> 
+
+
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of cards-1 -->
+    <!-- end of description -->
+    <!-- Intro -->
+    <div >
+          <!-- Classify -->
+			<div class="container">
+                
+				<div class="row">
+                <div class="col-lg-6">
+                <div class="section-title"><h3>Classify</h3></div>    
+                    <div class="text-container">
+                        
+                    </div>
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                   
+                    <!-- Call Me Form -->
+                    <form id="callMeForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+							<a type="submit" class="form-control-submit-button" href="classification">Heart Risk Image Classification</a>
+                        </div>   
+                    </form>
+                    <!-- end of call me form -->
+                    
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    <!-- end of call me -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of intro -->
+    
+    <!-- end of services -->
+<div id="Insights" class="counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-xl-6">
+                     <div>
+                        <img class="card-image" src="{{url_for('static', filename='images/ecg1.jpg')}}"  width="400" height="400" alt="alternative">
+                        <img class="card-image" src="{{url_for('static', filename='images/ecg2.jpg')}}"  width="600" height="300" alt="alternative">
+                     </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-7 col-xl-6">
+                    <div class="text-container">
+                        <div class="section-title">Few Insights.</div>
+                        <h2>Using Machine Learning/ Deep Learning Models </h2>
+                        
+                        <p>To know more about the data analysis look at this project on 
+                                    <strong><a href= "">Project on Github</a></strong></p>
+
+                        <!-- end of counter -->
+
+                    </div> <!-- end of text-container -->      
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of counter -->
+    <!-- end of about -->
+
+    <!-- Footer -->
+    <div id=contact class="footer">
+        <div class="container">
+            <div class="row">
+            <img class="card-image" src="{{url_for('static', filename='images/omdena.png')}}"  width="150" height="150" alt="alternative">
+
+                <div class="col-md-6">
+                    <div class="text-container about">
+                        <h4>Developed by:</h4>
+                        <h5 class="white">Heart Risk Team</h2>
+                        <h6 class="white">Local Chapter, Morocco</h6>
+                    
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-md-2">
+                    <div class="text-container">
+                        <h4>Connect</h4>
+                        
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-md-2">
+                    <div class="text-container">
+                        <h4>Tools Used</h4>
+                        <ul class="list-unstyled li-space-lg">
+                            <li>
+                                <a class="white" href="#">Python / Flask / TensorFlow...</a>
+                            </li>
+                            
+                        </ul>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of footer -->  
+    <!-- end of footer -->
+
+    
+    	
+    <!-- Scripts -->
+    <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+	<script src="{{url_for('static', filename='js/popper.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/jquery.easing.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/jquery.magnific-popup.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/morphext.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/isotope.pkgd.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{url_for('static', filename='js/validator.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+	<script src="{{url_for('static', filename='js/scripts.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+</body>
+</html>
