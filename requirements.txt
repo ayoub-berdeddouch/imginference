@@ -9,3 +9,4 @@ opencv-python-headless
 Werkzeug
 tensorflow
 keras
+pytest
