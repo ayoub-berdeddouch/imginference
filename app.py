@@ -8,8 +8,10 @@ import csv
 
 
 # uncomment this after 
+# TensorFlow and tf.keras
+import tensorflow as tf
+from tensorflow import keras
 
-import tensorflow
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
