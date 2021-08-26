@@ -1,23 +1,3 @@
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>ECG Classification</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<div class="container">
-  <h1 class="jumbotron bg-primary">Omdena - Heart Risk Classification</h1>
-  <br><br>
- -->
-<!--  -->
-<!--  -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,24 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
-  <meta property="og:site_name" content="" /> <!-- website name -->
-  <meta property="og:site" content="" /> <!-- website link -->
-  <meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
-  <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
-  <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
-  <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
-  <meta property="og:type" content="article" />
+      <meta property="og:site_name" content="" /> <!-- website name -->
+      <meta property="og:site" content="" /> <!-- website link -->
+      <meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+      <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+      <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+      <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+      <meta property="og:type" content="article" />
 
     <!-- Website Title -->
-    <title>Loan Applicantion Form</title>
+    <title>ECG Inference</title>
      <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
-  <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    
+    <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/fontawesome-all.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/swiper.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/magnific-popup.css')}}" rel="stylesheet">
-  <link href="{{url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
 
   
   <!-- Favicon  -->
@@ -140,44 +122,130 @@
 
     <br><br>
 
-        <div align="center">
-            <form class="form-horizontal" action="/classification" method="post" enctype="multipart/form-data">
+        <div class="col-9 offset-2" align="left">
+                <form class="form-horizontal" action="/classification" method="post" enctype="multipart/form-data">
 
-            <div class="form-group">
-              <label class="control-label col-sm-2" for="pwd">Upload Your Image :</label>
-              <div class="col-sm-10">          
-                <input type="file" class="form-control" placeholder="Heart Risk Image"  name="my_image" id="pwd">
-              </div>
-            </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-4"  align ="left" for="pwd">Upload Your Image :</label>
+                      <div class="col-sm-10">          
+                        <input type="file" class="form-control" placeholder="Heart Risk Image"  name="my_image" id="pwd">
+                      </div>
+                      <br>
+                      <label class="control-label col-sm-4"align ="left for="pwd">Give us your Professional Inference <i><b>NORMAL/MI</b></i>:</label>
+                      <div class="col-sm-10">          
+                        <input type="text" class="form-control" placeholder="Your Professional Inference"  name="doc_infer" id="pwd">
+                      </div>
+                    </div>
 
-            <div class="form-group">        
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success">Submit</button>
-              </div>
-            </div>
-          </form>
+                    <div class="form-group">        
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                      </div>
+                    </div>
+              </form>
         </div>
-      <div align="center">	
 
-          {% if prediction %}
-          <img src="{{img_path}}" height="400px" width="400px">
-        	<h2> Your Prediction   : <i> {{prediction}} </i></h2>
+        <div class="col-4 offset-4">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+              <div class="alert alert-warning" role="alert" id="info" align="center">
+                <ul class=flashes>
+                {% for message in messages %}
+                  {{ message }}
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+              
+            {% endwith %}
+        </div>
 
-        	{% endif %}
+        <div id="classification" align="center">	
 
+          {% if label %}
+          <img src="{{img_path}}" height="500px" width="500px">
+        	<h2> Model Inference   : 
+                {% if label == 'MI'%}
+                    <i style="color: red;"> {{ label }} </i>
+                {% else %}
+                    <i style="color: green;"> {{ label }} </i></h2>    
+                {% endif %}
+            </h2>
+
+            <h3> <i>Doctor Professional Inference: {{real_label}}</i></h3>
+            <h6> The image is stored in: <i style="background: gray;"></i> {{img_path}}</h4>
+            {% endif %}
       </div>
+      <br>
 
+      
+        <div class="col-4 offset-4">
+            
+
+            {% if prob %}
+            <h3 ><b>Confidence:</b></h3>
+                {% if label=='MI'%}
+                    MI     :{{prob}} % <br>
+                    NORMAL :{{ (100 - prob)|round(2)}} %
+                {% else %}
+                    MI    :{{ (100 - prob)|round(2)}} <br>
+                    NORMAL :{{ prob}} %
+                {% endif %}
+            {% endif %}
+            <br>
+         {% if prob %}
+            <div class="progress" align="center">
+                {% if label=='MI'%}
+                    <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" 
+                                role="progressbar" style="width: {{prob}}%;">
+                        {{prob}} % MI ECG
+                      </div>
+                    
+                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" 
+                                role="progressbar" style="width: {{(100 - prob)|round(2)}}%;">
+                        {{(100 - prob)|round(2)}}% NORMAL ECG
+                      </div>
+                    </div>
+                {% else %}
+                    <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" 
+                                role="progressbar" style="width: {{(100 - prob)|round(2)}}%;">
+                        {{(100 - prob)|round(2)}} % MI ECG
+                      </div>
+                    
+                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" 
+                                role="progressbar" style="width: {{prob}}%;">
+                        {{prob}}% NORMAL ECG
+                      </div>
+                    </div>
+                {% endif %}
+            <br>
+            <div align="center">
+                <a href="/classification" class="btn btn-secondary btn-lg" style="font-size:1.5rem">Try Again</a>
+            </div>
+        {% endif %}
+        </div>
       <br><br>
       <br><br>
+      <!-- <div align="center">
+                <form class="form-horizontal" action="/real_inference" method="post" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                      <label class="control-label col-sm-2" for="pwd">Give us your Professional Inference :</label>
+                      <div class="col-sm-10">          
+                        <input type="text" class="form-control" placeholder="Your Professional Inference"  name="doc_infer" id="pwd">
+                      </div>
+                    </div>
+
+                    <div class="form-group">        
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                      </div>
+                    </div>
+              </form>
+        </div> -->
       <br><br>
 
 
-
-
-<!-- 
-</body>
-</html>
- -->
 
 <!-- Footer -->
     <div id=contact class="footer">
@@ -227,6 +295,8 @@
     <script src="{{url_for('static', filename='js/isotope.pkgd.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
     <script src="{{url_for('static', filename='js/validator.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
   <script src="{{url_for('static', filename='js/scripts.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 </body>
 </html>
 
