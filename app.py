@@ -2,7 +2,7 @@ from flask import Flask, render_template, request,flash
 from flask import json
 import logging
 import numpy as np
-import pandas as pd 
+# import pandas as pd 
 import cv2
 import csv
 
