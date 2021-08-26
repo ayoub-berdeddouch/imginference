@@ -9,13 +9,10 @@ import csv
 
 # uncomment this after 
 
-#import tensorflow
-#from tensorflow.keras.models import load_model
-#from tensorflow.keras.preprocessing import image
+import tensorflow
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image
 
-import keras
-from keras.models import load_model
-from keras.preprocessing import image
 
 STATIC_FOLDER = "./static/"
 MODELS_FOLDER = "./models/"
