@@ -30,11 +30,13 @@ __I our case I used a `T2.large with 2Vcpu & 8Gio of RAM` __
 
 - Create a new or select an existing security group in the next step.
 __Note:__ to avoid cluttering your AWS account with multiple security groups that do the same thing, you can reuse an existing security group with these inbound rules, or create a new one if you like:
+
 * SSH
 * HTTP
 * HTTPS
 
 The SSH setting allows ssh access from any IP address. If you prefer you can set it to only allow access to your Public IP which you would need to update every time it changes unless you have a Static IP. 
+
 HTTP allows you to access your new instance from the browser and HTTPS is for running secure connections if you have an SSL certificate.
 
 ![Inbound Rules](https://github.com/ayoub-berdeddouch/imginference/blob/main/readmeImg/rules.png)
@@ -67,10 +69,10 @@ You can use FTP if you like but that is no longer the most efficient approach.
 2 — locate the private key file we previously downloaded and let’s move somewhere where is easier to find. 
 I like to keep the key in my root directory in a folder called .ssh Create a new one if you don’t have one. Run the following commands in the terminal.
 
-`
+```bash
 $ cd
 $ mkdir ~/.ssh
-`
+```
 
 The dot in front of that folder means it will be a hidden file. To show it in finder use this keyboard shortcut `cmd + shift + .` to toggle hidden files.
 
@@ -82,26 +84,27 @@ The dot in front of that folder means it will be a hidden file. To show it in fi
 
 
 
-```
+```bash
 $ cd 
 $ ssh -i “~/.ssh/KEY-NAME.pem” ubuntu@ec2-IP@dress.REGION.compute.amazonaws.com
 
 __Or just__
 
 $ cd folder where you saved the KEY
-$ ssh -i "KEY_NAME.pem" ubuntu@ec2-IP@dress.REGION.compute.amazonaws.com```
+$ ssh -i "KEY_NAME.pem" ubuntu@ec2-IP@dress.REGION.compute.amazonaws.com
+```
 
-
-__ SUCCESSFULLY CONNECTED__
+__SUCCESSFULLY CONNECTED__
 
 
 __3. Step 03 — Update and upgrade__
 
 Before we do anything else, let’s make sure we update the local package index and upgrade the system. This makes sure everything is up to date and prevents any errors due to deprecations.
 
-`$ sudo apt-get update
+```bash
+$ sudo apt-get update
 $ sudo apt-get -y upgrade
-`
+```
 
 __4. Step 04 — Set up Python 3__
 
@@ -111,10 +114,11 @@ Check the Python version installed in the system, as of this article Python 2 is
 Install PIP to manage software packages for Python. `$ sudo apt install -y python3-pip`
 
 Check that pip3 installation was successful.  
-```
+```bash
 pip3 -V  
 Output  
-pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)```
+pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)
+```
 
 Install other required dependencies to make sure you have a robust development environment.
 `$ sudo apt install -y build-essential libssl-dev libffi-dev python3-dev`
@@ -145,20 +149,20 @@ To make this section less error-prone, let’s first clone our Flask app from gi
 
 * Create a symlink to the site root defined in Apache’s configuration.
 
-```
+```bash
 $ cd
-$ sudo ln -sT ~/imginference /var/www/html/imginference```
-
+$ sudo ln -sT ~/imginference /var/www/html/imginference
+```
 * Install Requirments 
 
-```
+```bash
 $ cd ~/imginference
 $ sudo pip3 install -r requirements.txt
 ```
 
 __NOTE:__ You may run into some errors while installing CV2(OpenCV), so just run this 2 lines:
 
-```
+```bash
 $ sudo apt-get update
 $ sudo apt-get install -y libgl1-mesa-dev
 ```
@@ -173,8 +177,8 @@ __Then,__
 
 * Put the following in the production.wsgifile.
 
-```
-# production.wsgi
+```python
+#production.wsgi
 import sys
 sys.path.insert(0,"/var/www/html/imginference/")
 from run import app as application
@@ -214,7 +218,7 @@ Add the following to imginference.conf
 
 `$ sudo a2dissite 000-default.conf`
 
-```
+```bash
 -- Output
 Site 000-default disabled.
 To activate the new configuration, you need to run:
