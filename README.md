@@ -26,7 +26,7 @@ Let’s start by opening up the EC2 console in your AWS account. From here launc
 
 __I our case I used a `T2.large with 2Vcpu & 8Gio of RAM` __
 
-![Ubuntu 20.04 LTS]()
+![Ubuntu 20.04 LTS](https://github.com/ayoub-berdeddouch/imginference/blob/main/readmeImg/instance.png)
 
 - Create a new or select an existing security group in the next step.
 __Note:__ to avoid cluttering your AWS account with multiple security groups that do the same thing, you can reuse an existing security group with these inbound rules, or create a new one if you like:
@@ -37,14 +37,14 @@ __Note:__ to avoid cluttering your AWS account with multiple security groups tha
 The SSH setting allows ssh access from any IP address. If you prefer you can set it to only allow access to your Public IP which you would need to update every time it changes unless you have a Static IP. 
 HTTP allows you to access your new instance from the browser and HTTPS is for running secure connections if you have an SSL certificate.
 
-![Inbound Rules]()
+![Inbound Rules](https://github.com/ayoub-berdeddouch/imginference/blob/main/readmeImg/rules.png)
 
 - Choose to create a new key pair or reuse an existing one.
 There is also an option to reuse public keys, just like security groups it is best to reuse them if it makes sense. 
 Make sure to download and save the key pair somewhere where you can find it later, I’ll be referring to this key as "__KEY_GIVE-IT-ANAME__".pem . 
 Once everything is configured click on the Launch Instances button.
 
-![KEY]()
+![KEY](https://github.com/ayoub-berdeddouch/imginference/blob/main/readmeImg/key.png)
 
 Go back to your EC2 dashboard and remember to give your new instance a meaningful name to keep better track of it and wait for the instance state to finish launching. 
 
@@ -56,11 +56,12 @@ You can use FTP if you like but that is no longer the most efficient approach.
 
 - To get the connection details select your new instance and click on the connect button in your EC2 dashboard.
 
-![EC2_Dashboard]()
+![EC2_Dashboard](https://github.com/ayoub-berdeddouch/imginference/blob/main/readmeImg/ec2_dash.png)
 
 - Follow the instructions listed on the next screen, make sure to click on the SSH client tab.
 
-![SSH_CONNECT]()
+![SSH_CONNECT](https://github.com/ayoub-berdeddouch/imginference/blob/main/readmeImg/sshco1.png)
+![SSH_CONNECT](https://github.com/ayoub-berdeddouch/imginference/blob/main/readmeImg/sshco2.png)
 
 1 — when someone refers to an SSH Client, it could be your Mac terminal, Windows Powershell which I am using.
 2 — locate the private key file we previously downloaded and let’s move somewhere where is easier to find. 
@@ -136,7 +137,7 @@ When installing mod_wsgi make sure to install the version in this guide. If you 
 
 If you point to your browser at your instance’s Public DNS you should see Apache’s default page, indicating the installation is working correctly.
 
-![Apache2 HomePage]()
+![Apache2 HomePage](https://github.com/ayoub-berdeddouch/imginference/blob/main/readmeImg/apache2.png)
 
 __7. Step 07 — Create And Configure Flask App__
 
@@ -234,7 +235,8 @@ To activate the new configuration, you need to run:
 
 * Reload your browser and instead of the default Apache page you should now see the Web App home page.
 
-![WebApp HOME]()
+![WebApp HOME](https://user-images.githubusercontent.com/24941662/131371431-96df26ec-953d-4991-9692-45e348c19f2d.png)
+
 
 
 __9. Step 9: This is the important step for running of the Flask Application.__
@@ -257,7 +259,8 @@ So for running the python application we will use the command:
 Now if we wish to kill the process we can use the command: `$sudo kill <process-id>`.(Make sure you are ssh’ed in the instance)
 
 
-![WebApp HOME]()
+![WebApp HOME](https://user-images.githubusercontent.com/24941662/131371431-96df26ec-953d-4991-9692-45e348c19f2d.png)
+
 
 
 
