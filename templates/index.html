@@ -69,6 +69,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="#Classify">Classify</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#Disclaimer">Disclaimer</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="#Insights">INSIGHTS</a>
@@ -116,15 +119,15 @@
                         </span>
                         <div class="card-body">
                             <h4 class="card-title">Domain Knowledge</h4>
-                            <p>●<b>ECG</b> contains waves, intervals, segments and one complex</p>
-                            <p>
-                                <ul>
-                                    <ol>● <b>Wave</b>: A positive or negative deflection from baseline that indicates aspecific electrical event( P wave, Q wave, R wave, S wave, T wave andU wave)</ol>
-                                    <ol>●<b>Interval</b>: The time between two specific ECG events.(PR interval, QRSinterval, QT interval and RR interval)</ol>
-                                    <ol>● <b>Segment</b>: The length between two specific points on an ECG that aresupposed to be at the baseline amplitude ( PR segment, ST segmentand TP segment).</ol>
-                                    <ol>● <b>Complex</b>: The combination of multiple waves grouped together. Theonly main complex on an ECG is the QRS complex</ol>
-                                </ul>
-                                ●<b>ECG</b> is made up of 12 characteristic views of the heart, six obtained from the ‘limb’ leads (I, II, III, VR, VL, VF) and six from the ‘chest’ leads (V1–V6).                                                  
+                            <p>In patients with myocardial ischemia or infarction, findings on the ECG are influenced by multiple factors, including the following:
+                                <ol>
+                                    <li>Duration – Hyperacute/acute versus evolving/chronic</li>
+                                    <li>Size – Amount of myocardium affected</li>
+                                    <li>Anatomic location – Anterior, lateral, or inferior-posterior</li>
+                                    <li>After a myocardial infarction, the first abnormality seen on the ECG is elevation of the ST segment.</li>
+                                    <li>Subsequently, Q waves appear, and the T waves become inverted. The ST segment returns to the baseline, the whole process taking a variable time but usually within the range 24–48 h.</li>
+                                    <li>T wave inversion is often permanent.</li>
+                                </ol>
                             </p>
                             
                         </div>
@@ -157,7 +160,8 @@
                             <p> ● Cropping ECG Reports <br>
                                 ● Removing Background & Noise <br>
                                 ● Extracting 12 Leads <br>
-
+                                ● Adding 6-Negative Leads (i.e., I-,II-,III-,aVR-,aVL-,AVF-)<br>
+                                ● Converting PTB-XL Records into Images <br>
                             </p>
                            
                         </div>
@@ -173,9 +177,9 @@
                         </span>
                         <div class="card-body">
                             <h4 class="card-title">Modelization</h4>
-                            <p> ● Simple VGG <br>
-                                ● AlexNet VGG <br>
-                                ● ongoing...
+                            <p> ● Simple VGG by @Ayoub, using TensorFlow <br>
+                                ● VGG16 with some tuning of last layers by @Doaa, using Pytorch<br>
+                                ● open to further improvement and other Architectures.<br>
 
                                 
                             </p>
@@ -192,7 +196,7 @@
                         </span>
                         <div class="card-body">
                             <h4 class="card-title">Classsification</h4>
-                            <p>● Classify wetheir its Alarming, Risked, or Normal</p>
+                            <p>● Classify, give inference of an ECG image either it is <b>NORMAL</b>, or <b>MI</b></p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -221,7 +225,10 @@
                     <!-- Call Me Form -->
                     <form id="callMeForm" data-toggle="validator" data-focus="false">
                         <div class="form-group">
-							<a type="submit" class="form-control-submit-button" href="classification">Heart Risk Image Classification</a>
+							<a type="submit" class="form-control-submit-button" href="inference">ECG inference model by Doaa</a>
+                        </div>   
+                        <div class="form-group">
+                            <a type="submit" class="form-control-submit-button" href="classification">ECG inference model by Ayoub</a>
                         </div>   
                     </form>
                     <!-- end of call me form -->
@@ -233,8 +240,40 @@
     </div> <!-- end of basic-1 -->
     <!-- end of intro -->
     
+
+
+
+    <div id="Disclaimer" class="counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-xl-6">
+                     <div>
+                        <img class="card-image" src="{{url_for('static', filename='images/disclaimer.jpg')}}"  width="400" height="400" alt="alternative">
+                     </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-7 col-xl-6">
+                    <div class="text-container">
+                        <div class="section-title">Disclaimer</div>
+                        <ul>
+                            <li><b>1/</b>Those models are designed to inform the user and provide them with a probability of  Myocardial Infarction diagnosis.</li>
+                            <li><b>2/</b>We emphasize that the purpose of these models is to inform physicians and patients and that the models should not be used for decision support.</li>
+                            <li><b>3/</b>The Content is not intended to substitute for professional medical advice, diagnosis, or treatment.</li>
+                            <li><b>4/</b>NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY SEEKING MEDICAL TREATMENT BECAUSE OF SOMETHING YOU HAVE READ ON OR ACCESSED THROUGH THE WEBSITE.</li>
+                            <li><b>5/</b>Those models are not certified (CE marked or FDA approved).</li>
+                            <li><b>6/</b>By using those models, you agree to these terms and conditions.</li>
+                        </ul>
+                        
+
+                    </div> <!-- end of text-container -->      
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of counter -->
+    <!-- end of about -->
+
     <!-- end of services -->
-<div id="Insights" class="counter">
+    
+    <div id="Insights" class="counter">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-xl-6">
